@@ -104,7 +104,7 @@ public class Taller02UnitTesting {
 
     }
 
-    private static int esPalindromo(String s, String s1) {
+    public static int esPalindromo(String s, String s1) {
 
         s1 = formatPalabra(s1);
         if(s.equals(s1)){
