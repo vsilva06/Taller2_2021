@@ -44,9 +44,10 @@ public class Taller02UnitTesting {
 
     public static String obtenerPathValido(){
         String path;
+
         do{
             path = leerPath();
-        }while(!validarFormatoPath(path) ||  !validarExistenciaArchivo(path));
+        }while(!validarExistenciaArchivo(path));
 
         return path;
     }
@@ -58,7 +59,7 @@ public class Taller02UnitTesting {
             lector = new Scanner(new File(path));
 
             while (lector.hasNextLine()) {
-                String[] data = lector.nextLine().split("");
+                String[] data = lector.nextLine().split("\n");
                 for(String x : data){
                     datosArchivo.add(x);
                 }
