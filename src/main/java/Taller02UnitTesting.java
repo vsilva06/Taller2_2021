@@ -11,7 +11,7 @@ public class Taller02UnitTesting {
 
 
     public static boolean validarExistenciaArchivo(String path) {
-        Scanner lector;
+
         boolean existe;
         try {
             File archivo = new File(path);
@@ -47,7 +47,7 @@ public class Taller02UnitTesting {
 
 
     public static void leerDatosArchivo(String path, ArrayList<String> datosArchivo) {
-        Scanner lector;
+
         try {
             lector = new Scanner(new File(path));
 
