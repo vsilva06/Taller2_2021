@@ -9,14 +9,15 @@ public class Taller02UnitTesting {
     public static Scanner lector;
     public static Scanner tec = new Scanner(System.in);
 
-    public static boolean validarExistenciaArchivo(String path){
+
+    public static boolean validarExistenciaArchivo(String path) {
         Scanner lector;
         boolean existe;
-        try{
+        try {
             File archivo = new File(path);
             lector = new Scanner(archivo);
             existe = true;
-        }catch(FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             existe = false;
             System.out.println("El archivo no existe");
         }
@@ -25,7 +26,7 @@ public class Taller02UnitTesting {
     }
 
 
-    public static String leerPath(){
+    public static String leerPath() {
         var tec = new Scanner(System.in);
         System.out.println("Ingrese el path del archivo:");
 
@@ -33,34 +34,26 @@ public class Taller02UnitTesting {
         return path;
     }
 
-    public static boolean validarFormatoPath(String path){
-        boolean validacion = path.endsWith(".txt");
-        if(!validacion){
-            System.out.println("Formato erroneo");
 
-        }
-        return validacion;
-    }
-
-    public static String obtenerPathValido(){
+    public static String obtenerPathValido() {
         String path;
 
-        do{
+        do {
             path = leerPath();
-        }while(!validarExistenciaArchivo(path));
+        } while (!validarExistenciaArchivo(path));
 
         return path;
     }
 
 
-    public static void leerDatosArchivo(String path, ArrayList<String> datosArchivo){
+    public static void leerDatosArchivo(String path, ArrayList<String> datosArchivo) {
         Scanner lector;
         try {
             lector = new Scanner(new File(path));
 
             while (lector.hasNextLine()) {
                 String[] data = lector.nextLine().split("\n");
-                for(String x : data){
+                for (String x : data) {
                     datosArchivo.add(x);
                 }
 
@@ -71,49 +64,46 @@ public class Taller02UnitTesting {
         }
 
 
-
     }
 
-    public static void mostrarItems(ArrayList<String> datosArchivo){
-        for(int i = 0; i < datosArchivo.size(); i+=2 ){
-            int indice = i/2 +1;
-            System.out.println("["+indice+"] Producto: "+datosArchivo.get(i)+" Precio: "+datosArchivo.get(i+1));
+    public static void mostrarItems(ArrayList<String> datosArchivo) {
+        for (int i = 0; i < datosArchivo.size(); i += 2) {
+            int indice = i / 2 + 1;
+            System.out.println("[" + indice + "] Producto: " + datosArchivo.get(i) + " Precio: " + datosArchivo.get(i + 1));
         }
 
     }
 
 
-
     public static void revertirPalabra(ArrayList<String> datosArchivo) {
-        int cont =0;
+        int cont = 0;
         ArrayList<String> palindromo = null;
 
         String palabra = "";
 
         for (int i = 0; i < datosArchivo.size(); i++) {
-          palindromo.set(i, formatPalabra(datosArchivo.get(i)));
-          palabra = palindromo.get(i);
+            palindromo.set(i, formatPalabra(datosArchivo.get(i)));
+            palabra = palindromo.get(i);
 
-          palindromo.set(i,new StringBuilder(palabra).reverse().toString());
-          cont+=esPalindromo(palindromo.get(i),datosArchivo.get(i));
+            palindromo.set(i, new StringBuilder(palabra).reverse().toString());
+            cont += esPalindromo(palindromo.get(i), datosArchivo.get(i));
 
 
         }
 
-        System.out.println("La cantidad de palindromos es: "+cont);
+        System.out.println("La cantidad de palindromos es: " + cont);
 
     }
 
     public static int esPalindromo(String s, String s1) {
 
         s1 = formatPalabra(s1);
-        if(s.equals(s1)){
+        if (s.equals(s1)) {
             return 1;
-        }else{
+        } else {
             return 0;
         }
     }
-
 
 
     public static String formatPalabra(String palabra) {
