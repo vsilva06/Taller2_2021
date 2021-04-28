@@ -42,7 +42,8 @@ public class Taller02UnitTesting {
         return validacion;
     }
 
-    public static String obtenerPathValido(String path){
+    public static String obtenerPathValido(){
+        String path;
         do{
             path = leerPath();
         }while(!validarFormatoPath(path) ||  !validarExistenciaArchivo(path));
